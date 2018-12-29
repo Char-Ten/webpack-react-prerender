@@ -7,7 +7,7 @@ const PAGE_ROUTE_PATH = path.join(SRC, 'routes');
 const PAGE_PAGES_PATH = path.join(SRC, 'pages');
 const a = [{ path: PAGE_ROUTE_PATH, str: '' }];
 const question =
-    '请选择你要删除的路由（↑/↓键切换，A全选，Y确认，Enter删除，Q退出）';
+    '请选择你要删除的路由（↑/↓键切换，A全选，Y删除，Enter选择，Q退出）';
 const TOP = Buffer.from([0x1b, 0x5b, 0x41]);
 const BOTTOM = Buffer.from([0x1b, 0x5b, 0x42]);
 const ENTER = Buffer.from([0x0d]);
