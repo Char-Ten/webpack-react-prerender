@@ -1,0 +1,129 @@
+/* CSS Document */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body,
+fieldset,
+img,
+iframe,
+abbr {
+    border: 0;
+}
+li {
+    list-style: none;
+}
+textarea {
+    overflow: auto;
+    resize: none;
+}
+a,
+button {
+    cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+b {
+    font-weight: bold;
+}
+a,
+a:hover {
+    text-decoration: none;
+}
+body,
+html {
+    width: 100%;
+    font-weight: normal;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Microsoft YaHei', 'Helvetica Neue', Arial, HelveticaNeue,
+        Helvetica, 'BBAlpha Sans', sans-serif;
+}
+body {
+    background: #efefef;
+    opacity: 1;
+}
+a {
+    text-decoration: none;
+}
+h1 {
+    font-size: 0.32rem;
+}
+h2 {
+    font-size: 0.34rem;
+}
+h3 {
+    font-size: 0.3rem;
+}
+h4 {
+    font-weight: normal;
+    font-size: 0.3rem;
+}
+h5 {
+    font-size: 0.28rem;
+}
+textarea {
+    font-size: 24px;
+}
+
+img {
+    vertical-align: top;
+}
+
+input,
+select,
+textarea,
+option {
+    border: 0;
+    outline: none;
+    font-family: 'Microsoft YaHei';
+}
+.hide {
+    display: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
