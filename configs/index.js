@@ -11,5 +11,8 @@ module.exports = {
 	/**@name webpack别名配置 */
 	ALIAS:{
 		src: PATH.join(__dirname, "../src"),
-	}
+	},
+
+	/**@name webpack通用模块配置 */
+	COMMON_LOADER:[],
 };

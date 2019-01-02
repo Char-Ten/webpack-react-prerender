@@ -42,10 +42,12 @@ class HTMLRenderPlugin {
                     let source = compilation.assets[filename].source();
                     let path = filename.replace(/\.js$/, '');
 
-                    let context = {};
+                    let context = {
+						global:{},
+					};
                     vm.createContext(context);
                     try {
-                        vm.runInContext(`var global={};${source}`, context);
+                        vm.runInContext(source, context);
                     } catch (error) {
                         console.log(`${filename}文件有错误，请检查：`);
                         rej(error);

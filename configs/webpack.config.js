@@ -6,6 +6,12 @@ const CONFIG = require('./index');
 const entry = new EntriesCreatePlugin({
     target: /client\.js/
 }).entries;
+const moduleCssLoader = {
+    loader: 'css-loader',
+    options: {
+        modules: true
+    }
+};
 module.exports = {
     mode: 'development',
     entry,
@@ -34,22 +40,51 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                exclude: /\.module\.css$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader']
+            },
+            {
+                test: /\.module\.css$/,
+                use: ['style-loader', moduleCssLoader, 'postcss-loader']
+            },
+            {
+                test: /\.less$/,
+                exclude: /\.module\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'less-loader'
+                ]
+            },
+            {
+                test: /\.module\.less$/,
+                use: [
+                    'style-loader',
+                    moduleCssLoader,
+                    'postcss-loader',
+                    'less-loader'
+                ]
             }
         ]
-	},
-	devServer:{
-		port:9000,
-		hot:true,
-		historyApiFallback: true
-	},
+    },
+    devtool: 'source-map',
+    devServer: {
+        port: 9000,
+        hot: true,
+        historyApiFallback: true
+    },
     plugins: [
+        new webpack.DefinePlugin({
+			'module.IS_DEV': true,
+			'module.IS_RENDER':false
+        }),
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('../lib/reactDLL/manifest.json'),
             name: CONFIG.DLL.name
-		}),
-		new webpack.HotModuleReplacementPlugin(),
+        }),
+        new webpack.HotModuleReplacementPlugin(),
         ...Object.keys(entry).map(
             item =>
                 new HtmlWebpackPlugin({

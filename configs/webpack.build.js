@@ -7,12 +7,18 @@ const CpPlugin = require('./plugins/cp-plugin');
 const extactTextWebpackPlugin = new ExtractTextWebpackPlugin(
     'src/[name]/index.css'
 );
-
+const moduleCssLoader = {
+    loader: 'css-loader',
+    options: {
+        modules: true
+    }
+};
 module.exports = Object.assign({}, webpackConfigs, {
     mode: 'production',
     output: {
         filename: 'src/[name]/index.js',
-        chunkFilename: 'src/[name]/index.js',
+		chunkFilename: 'src/[name]/index.js',
+		sourceMapFilename:'map/[name]/[file].map',
         publicPath: '/',
         path: CONFIG.OUTPUT_PATH
     },
@@ -41,23 +47,43 @@ module.exports = Object.assign({}, webpackConfigs, {
                 use: 'babel-loader'
             },
             {
-                test: /\.css$/,
+				test: /\.css$/,
+				exclude: /\.module\.css$/,
                 use: extactTextWebpackPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'postcss-loader']
                 })
             },
             {
-                test: /\.less$/,
+				test: /\.less$/,
+				exclude: /\.module\.less$/,
                 use: extactTextWebpackPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'postcss-loader', 'less-loader']
+                })
+			},
+			{
+                test: /\.module\.css$/,
+                use: extactTextWebpackPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [moduleCssLoader, 'postcss-loader', 'less-loader']
+                })
+			},
+			{
+                test: /\.module\.less$/,
+                use: extactTextWebpackPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [moduleCssLoader, 'postcss-loader', 'less-loader']
                 })
             }
         ]
     },
     plugins: [
-        extactTextWebpackPlugin,
+		extactTextWebpackPlugin,
+		new webpack.DefinePlugin({
+			'module.IS_DEV':false,
+			'module.IS_RENDER':false
+		}),
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('../lib/reactDLL/manifest.json'),

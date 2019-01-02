@@ -9,7 +9,7 @@
     "build": "webpack-cli -p --config configs/build.js --progress --color --hide-modules",
     "page:create": "node configs/cli/kpage/index create",
     "page:list": "node configs/cli/kpage/index list",
-	"page:remove": "node configs/cli/kpage/index remove"
+    "page:remove": "node configs/cli/kpage/index remove"
   },
   "author": "charten",
   "license": "ISC",
