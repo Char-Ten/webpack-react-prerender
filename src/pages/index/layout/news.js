@@ -18,15 +18,12 @@ export default class Banner extends React.Component {
     }
     render() {
         return (
-            <section id="banner">
-                <div className="banner">
-                    <img />
-                </div>
-                <div className="title">
-                    <Center>
-                        <h2>{this.state.title}</h2>
-                    </Center>
-                </div>
+            <section id="news">
+                <Center className="k-flex">
+					<div className="pic">
+					</div>
+					<div className="k-flex-item"></div>
+                </Center>
             </section>
         );
     }

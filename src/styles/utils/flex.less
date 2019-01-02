@@ -1,0 +1,12 @@
+.k-flex {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.generate-flex-items(5);
+.generate-flex-items(@count,@index:1) when (@index =<@count) {
+    .k-flex-@{index} {
+        flex: @index;
+    }
+    .generate-flex-items(@count, (@index+1));
+}

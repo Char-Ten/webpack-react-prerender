@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './layout/header.js';
 import Banner from './layout/banner.js';
+import News from "./layout/news.js"
 import 'src/styles/reset.css';
 import './styles/index.less';
 export default class App extends React.Component {
@@ -21,6 +22,7 @@ export default class App extends React.Component {
             <div id="root">
                 <Header />
                 <Banner />
+				<News/>
             </div>
         );
     }
