@@ -60,9 +60,9 @@ function progressbar() {
 }
 
 function mkdir(path) {
-    let command = 'mkdir -p ' + path;
+    let command = 'mkdir -p "' + path + '"';
     if (process.platform === 'win32') {
-        command = 'md ' + path;
+        command = 'md "' + path + '"';
     }
     childProcess.execSync(command);
 }
@@ -98,9 +98,8 @@ module.exports = pagePath => {
     );
 
     [PAGE_DIR_PATH, PAGE_ROUTE_PATH].forEach(item => {
-		if (!fs.existsSync(item)) {
-			
-			mkdir(item);
+        if (!fs.existsSync(item)) {
+            mkdir(item);
         }
     });
 

@@ -16,14 +16,19 @@ export default class Tabs extends React.Component{
 	}
 	render(){
 		return (
-			<div className="">
-				<div className="header">
-					
-				</div>
-				<ul>
+			<dd>
+				<dt>
+					<ul>
+						{this.props.list.map((item,index)=>{
+							
 
-				</ul>
-			</div>
+
+						})}
+						
+					</ul>
+				</dt>
+				<dd></dd>
+			</dd>
 		)
 	}
 }
