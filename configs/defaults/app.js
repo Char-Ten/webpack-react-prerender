@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 <h1>test</h1>
                 <p>{this.state.num}</p>
                 <button onClick={()=>this.setState({num:this.state.num+1})}>+1</button>
-                <button onClick={()=>this.setState({num:this.state.num-s1})}>-1</button>
+                <button onClick={()=>this.setState({num:this.state.num-1})}>-1</button>
             </div>
         );
     }
