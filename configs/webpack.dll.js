@@ -14,6 +14,17 @@ module.exports = {
 		path:path.join(__dirname,'../lib'),
 		library:CONFIG.name
 	},
+	optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: 'commons',
+                    chunks: 'initial',
+                    minChunks: 2
+                }
+            }
+		},
+    },
 	plugins:[
 		new webpack.DllPlugin({
 			context:__dirname,

@@ -65,14 +65,23 @@ module.exports = {
                     'postcss-loader',
                     'less-loader'
                 ]
-            }
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+				loader: 'url-loader',
+				options: {
+					limit: 5000,
+					name:'[path][name].[ext]'
+				}
+			},
         ]
     },
     devtool: 'source-map',
     devServer: {
         port: 9000,
         hot: true,
-        historyApiFallback: true
+		historyApiFallback: true,
+		host:'0.0.0.0'
     },
     plugins: [
         new webpack.DefinePlugin({

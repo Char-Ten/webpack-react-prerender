@@ -43,17 +43,27 @@ module.exports = Object.assign({}, configs, {
                     moduleCssLoader,
                     'less-loader'
                 ]
-            },
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+				loader: 'url-loader',
+				options: {
+					limit: 5000,
+					name: '[path][name].[ext]'
+				}
+			},
             {
                 exclude: /\.(js|html|module\.(css|less))$/,
                 use: 'url-loader'
-            }
+			},
+			
         ]
 	},
 	devtool:'eval',
 
     output: {
-        path: CONFIG.OUTPUT_PATH,
+		path: CONFIG.OUTPUT_PATH,
+		publicPath:'./',
         library: 'Runner',
         libraryTarget: 'umd'
     },

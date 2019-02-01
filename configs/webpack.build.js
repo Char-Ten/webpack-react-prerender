@@ -19,7 +19,7 @@ module.exports = Object.assign({}, webpackConfigs, {
         filename: 'src/[name]/index.js',
 		chunkFilename: 'src/[name]/index.js',
 		sourceMapFilename:'map/[name]/[file].map',
-        publicPath: '/',
+        publicPath: './',
         path: CONFIG.OUTPUT_PATH
     },
     optimization: {
@@ -75,7 +75,15 @@ module.exports = Object.assign({}, webpackConfigs, {
                     fallback: 'style-loader',
                     use: [moduleCssLoader, 'postcss-loader', 'less-loader']
                 })
-            }
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+				loader: 'url-loader',
+				options: {
+					limit: 5000,
+					name: '[path][name].[ext]'
+				}
+			},
         ]
     },
     plugins: [
@@ -92,6 +100,10 @@ module.exports = Object.assign({}, webpackConfigs, {
         new CpPlugin({
             source: PATH.join(__dirname, '../lib'),
             target: PATH.join(__dirname, '../dist/lib')
+		}),
+		new CpPlugin({
+            source: PATH.join(__dirname, '../static'),
+            target: PATH.join(__dirname, '../dist/src')
         })
     ]
 });
