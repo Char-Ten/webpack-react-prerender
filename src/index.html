@@ -2,6 +2,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
+        <meta name="version" content="${param.version}" />
         <meta
             name="viewport"
             content="width=device-width,initial-scale=1.0,user-scalable=0"
@@ -18,9 +19,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="renderer" content="webkit" />
-        <title>Document</title>
+        <title>${param.title||''}</title>
     </head>
     <body>
-		<div id="app"></div>
+        ${param.html}
     </body>
 </html>
